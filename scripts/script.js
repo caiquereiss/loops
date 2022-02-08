@@ -1,6 +1,7 @@
 function getDataHtml(){
-  const sale = document.getElementById('sale').value;
-  const amountPaid = document.getElementById('amount-paid').value;
+  const sale = Number(document.getElementById('sale').value);
+  const amountPaid = Number(document.getElementById('amount-paid').value);
+  
   return {
     sale,
     amountPaid
@@ -9,15 +10,17 @@ function getDataHtml(){
 
 function calculateThing() {
   const {sale, amountPaid} = getDataHtml();
-  
-  const sum = amountPaid - sale;
-  document.getElementById('result').innerHTML = sum;
+  const sum = (sale - amountPaid ) * -1 ;
 
-  if (sale < amountPaid) {
-
-     document.getElementById('result').innerHTML = '';
+  if (sale > amountPaid) {
+    
      window.alert('Valor da venda é maior que o valor pago');
-  } 
+     document.getElementById('result').innerHTML = '';
+
+  } else {
+    
+    document.getElementById('result').innerHTML = sum;
+  }
 
   return sum;
 }
